@@ -2,6 +2,7 @@ import './App.css'
 import {NavBar} from "./components/NavBar.tsx";
 import {HomeSection} from "./components/HomeSection.tsx";
 import {SkillsSection} from "./components/SkillsSection.tsx";
+import {ProjectSection} from "./components/ProjectSection.tsx";
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
                 <NavBar/>
                 <HomeSection/>
                 <SkillsSection/>
+                <ProjectSection />
             </div>
         </>
     )

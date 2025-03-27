@@ -1,0 +1,115 @@
+.project-card {
+    display: flex;
+    flex-direction: column;
+    color: #eae4e4;
+    background-color: #1c142c;
+    border-radius: 3%;
+    padding: 3%;
+    border: 0.2rem solid #ffffff;
+    transition-duration: 0.3s;
+}
+
+.project-description {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.project-image {
+    width: 100%;
+    border-radius: 3%;
+}
+
+.project-title {
+    font-weight: 900;
+    padding: 1%;
+    margin: 0;
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.project-description {
+    padding: 1%;
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.project-subtitle {
+    padding: 1%;
+    margin: 0;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.project-tools {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 1%;
+    margin: 0;
+    list-style: none;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.project-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1%;
+    margin: 0;
+}
+
+.project-button, .project-links a:visited {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 900;
+    background: #784aa4;
+    border-width: 0.1rem 0.1rem 0.2rem 0.1rem;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 0;
+    transition-duration: 1s;
+}
+
+.project-button:hover {
+    background: #522b73;
+    transition-duration: 0.3s;
+}
+
+@media (max-width: 1024px) {
+    .project-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-box {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-box {
+        grid-template-columns: 1fr;
+    }
+}
