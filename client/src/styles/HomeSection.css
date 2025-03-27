@@ -1,9 +1,5 @@
 .home-section {
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
-    color: #050303;
-    padding: 20px;
 }
 
 .hero {
