@@ -3,7 +3,7 @@ import '../styles/HomeSection.css'
 export function HomeSection() {
     return (
         <>
-            <section className="home-section">
+            <section id="home" className="home-section">
                 <div className="hero">
                     <div className="hero-banner">
                         <h3>SageTendo</h3>

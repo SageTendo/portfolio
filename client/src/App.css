@@ -1,5 +1,13 @@
 .body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 2rem;
+    scroll-margin-top: 4rem; /* Adjust based on your navbar height */
 }
