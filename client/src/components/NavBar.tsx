@@ -1,4 +1,4 @@
-import "../styles/NavBar.css";
+import "../styles/navbar.css";
 
 export function NavBar() {
     return (
