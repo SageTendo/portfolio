@@ -1,0 +1,49 @@
+.home-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: #050303;
+    padding: 20px;
+}
+
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    margin: 20px 20px 40px;
+    padding: 20px;
+}
+
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+p {
+    font-weight: 400;
+}
+
+.hero-bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    margin: 40px;
+    height: auto;
+    border-radius: 10px;
+}
