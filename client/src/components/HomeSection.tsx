@@ -1,4 +1,4 @@
-import '../styles/HomeSection.css'
+import '../styles/home_section.css'
 
 export function HomeSection() {
     return (
@@ -6,7 +6,7 @@ export function HomeSection() {
             <section id="home" className="home-section">
                 <div className="hero">
                     <div className="hero-banner">
-                        <h3>SageTendo</h3>
+                        <h3>Hi, I'm Nyasha</h3>
                         <h1>Welcome to my portfolio</h1>
                         {/*    TODO: Add Education Info*/}
                     </div>

@@ -1,11 +1,14 @@
 .project-card {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
     color: #eae4e4;
-    background-color: #1c142c;
-    border-radius: 3%;
-    padding: 3%;
-    border: 0.2rem solid #ffffff;
+    background-color: rgba(120, 74, 161, 0.3);
+    border-radius: 1rem 1rem 1rem 1rem;
+    overflow: hidden;
+    padding: 0 0 1rem 0;
     transition-duration: 0.3s;
 }
 
@@ -18,12 +21,14 @@
 .project-content {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .project-image {
     width: 100%;
-    border-radius: 3%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .project-title {
@@ -69,6 +74,7 @@
     margin: 0;
 }
 
+
 .project-button, .project-links a:visited {
     display: flex;
     flex-direction: row;
@@ -79,7 +85,7 @@
     color: white;
     font-size: 1.3rem;
     font-weight: 900;
-    background: #784aa4;
+    background: #6f30ab;
     border-width: 0.1rem 0.1rem 0.2rem 0.1rem;
     border-style: solid;
     border-color: #000000;
@@ -88,7 +94,7 @@
 }
 
 .project-button:hover {
-    background: #522b73;
+    background: rgba(82, 43, 115, 0.89);
     transition-duration: 0.3s;
 }
 

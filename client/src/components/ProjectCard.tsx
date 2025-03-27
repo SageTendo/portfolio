@@ -1,4 +1,4 @@
-import '../styles/ProjectCard.css'
+import '../styles/project_card.css'
 
 export function ProjectCard() {
     return (
@@ -20,8 +20,8 @@ export function ProjectCard() {
                             </span>
 
                     <div className="project-links">
-                        <button className="project-button">Code</button>
-                        <button className="project-button">Demo</button>
+                        <button className="project-button">View Code</button>
+                        <button className="project-button">Live Demo</button>
                     </div>
                 </div>
             </div>
