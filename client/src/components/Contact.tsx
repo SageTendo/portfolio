@@ -4,6 +4,12 @@ import linkedin_logo from '../assets/icons8-linkedin.gif';
 import gmail_logo from '../assets/icons8-gmail.gif';
 
 export function Contact() {
+    const email = "nz.zishiri@gmail.com";
+    const mailTo = "mailto:" + email;
+    const linkedin = "https://www.linkedin.com/in/nyasha-zishiri-a2bb68257/";
+    const github = "https://github.com/SageTendo";
+    const formSubmit = "https://formsubmit.co/eadfd1c0bf25f87cdf08c5811c5a8865";
+
     return (
         <>
             <section id="contact" className="contact-section">
@@ -17,22 +23,22 @@ export function Contact() {
                         <div className="contact-links">
                             <div className="contact-link">
                                 <img src={gmail_logo}/>
-                                <a href="mailto:nz.zishiri@gmail.com">nz.zishiri@gmail.com</a>
+                                <a href={mailTo}>Email</a>
                             </div>
 
                             <div className="contact-link">
                                 <img src={linkedin_logo}/>
-                                <a href="https://www.linkedin.com/in/nyasha-zishiri-a2bb68257/">LinkedIn</a>
+                                <a href={linkedin}>LinkedIn</a>
                             </div>
 
                             <div className="contact-link">
                                 <img src={github_logo}/>
-                                <a href="https://github.com/SageTendo">GitHub</a>
+                                <a href={github}>GitHub</a>
                             </div>
                         </div>
                     </div>
                     <form className="contact-form" method="post"
-                          action="https://formsubmit.co/eadfd1c0bf25f87cdf08c5811c5a8865">
+                          action={formSubmit}>
                         <div className="form-input">
                             <label htmlFor="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="" required/>
