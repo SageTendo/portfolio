@@ -9,6 +9,10 @@
     background-color: white;
 }
 
+.hamburger {
+    display: none;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -18,19 +22,19 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: 20px;
+    padding: 2rem;
 }
 
 .links {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .links a {
     text-decoration: none;
     color: black;
-    margin: 0 20px;
-    font-size: 1.2rem;
+    margin: 0 1.3rem;
+    font-size: 18pt;
     font-weight: 600;
 }
 
@@ -73,4 +77,88 @@
     color: white;
     font-size: 0.9rem;
     font-weight: 900;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        /*align-items: center;*/
+        width: 100vw;
+        height: auto;
+        top: 0;
+        overflow: hidden;
+        position: sticky;
+        background-color: white;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        border: 0;
+        background: none;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .menu-icon {
+        cursor: pointer;
+        background: none;
+    }
+
+    .menu-icon-active {
+        cursor: pointer;
+        background: rgba(28, 19, 45, 0.23);
+        border-radius: 0.3rem;
+    }
+
+    .container {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 0 2rem 0;
+    }
+
+    .active {
+        display: flex;
+    }
+
+    .logo {
+        display: flex;
+        align-items: flex-start;
+        justify-content: left;
+        width: 90%;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 0 0 10%;
+    }
+
+    .links a {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 900;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        width: 100%;
+        align-items: center;
+    }
+
+    .resume {
+        margin-top: 0.8rem;
+        width: 90%;
+        height: 40px;
+    }
 }

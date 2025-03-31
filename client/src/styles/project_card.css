@@ -1,3 +1,11 @@
+.project-section {
+    margin-bottom: 0;
+}
+
+.project-section .content-box {
+    gap: 2rem;
+}
+
 .project-card {
     display: flex;
     flex-direction: column;
@@ -5,11 +13,17 @@
     justify-content: center;
     align-items: center;
     color: #eae4e4;
-    background-color: rgba(120, 74, 161, 0.3);
+    background-color: rgba(186, 176, 192, 0.3);
     border-radius: 1rem 1rem 1rem 1rem;
     overflow: hidden;
-    padding: 0 0 1rem 0;
+    padding: 0 0 1.5rem 0;
     transition-duration: 0.3s;
+}
+
+.project-card:hover {
+    background-color: rgba(156, 128, 180, 0.44);
+    translate: 0 -0.5rem;
+    transition-duration: 0.5s;
 }
 
 .project-description {
@@ -51,7 +65,7 @@
     padding: 1%;
     margin: 0;
     font-weight: 900;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #ffffff;
 }
 
@@ -63,7 +77,7 @@
     margin: 0;
     list-style: none;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .project-links {
@@ -90,32 +104,32 @@
     border-style: solid;
     border-color: #000000;
     border-radius: 0;
-    transition-duration: 1s;
 }
 
 .project-button:hover {
     background: rgba(82, 43, 115, 0.89);
-    transition-duration: 0.3s;
+    transition-duration: 0.4s;
 }
 
 @media (max-width: 1024px) {
-    .project-section {
-        display: flex;
-        flex-direction: column;
+    .project-card {
+        padding: 0 0 2rem 0;
+        transition-duration: 0s;
+        font-size: 0.9rem;
     }
 
-    .project-box {
-        grid-template-columns: 1fr 1fr;
+    .project-button, .project-links a:visited {
+        height: 4rem;
+        font-size: 1.5rem;
     }
+
+    .project-subtitle {
+        padding: 1% 1% 0;
+    }
+
+    .project-card:hover {
+    background-color: rgba(156, 128, 180, 0.44);
+    translate: 0;
+    transition-duration: 0.4s;
 }
-
-@media (max-width: 768px) {
-    .project-section {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .project-box {
-        grid-template-columns: 1fr;
-    }
 }

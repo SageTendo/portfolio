@@ -1,5 +1,6 @@
 .home-section {
     justify-content: space-evenly;
+    margin-bottom: 0;
 }
 
 .hero {
@@ -14,11 +15,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 50%;
     height: auto;
-    border-radius: 10px;
-    margin: 20px 20px 40px;
-    padding: 20px;
+    margin: 2% 2% 4%;
+    padding: 1%;
 }
 
 
@@ -29,8 +28,14 @@ h1 {
     font-weight: 900;
 }
 
+.home-section h2 {
+    color: #440091;
+    font-weight: 900;
+}
+
 p {
     font-weight: 400;
+    font-size: 1.3rem;
 }
 
 .hero-bio {
@@ -38,8 +43,59 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    margin: 1rem;
     width: 50%;
-    margin: 40px;
     height: auto;
-    border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+    .home-section {
+        justify-content: center;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+        margin: 2% 2% 4%;
+        padding: 1%;
+    }
+
+    .hero-bio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        margin: 1rem;
+        height: auto;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 3.8rem;
+        font-weight: 900;
+    }
+
+    p {
+        font-size: 12pt;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3.4rem;
+        font-weight: 900;
+    }
 }

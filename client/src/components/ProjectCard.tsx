@@ -14,7 +14,7 @@ export function ProjectCard() {
                                 varius enim in eros.
                             </span>
 
-                    <h2 className="project-subtitle">Tools</h2>
+                    <h2 className="project-subtitle">Technologies Used:</h2>
                     <span className="project-tools">
                                 React Node Express MongoDB React Node Express MongoDB React Node
                             </span>

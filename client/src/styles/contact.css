@@ -1,3 +1,7 @@
+.contact-section {
+    margin-bottom: 0;
+}
+
 .content {
     display: flex;
     flex-direction: row;
@@ -98,4 +102,19 @@
 .contact-form button:hover {
     background: rgba(61, 20, 98, 0.89);
     transition-duration: 0.3s;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact-info{
+        width: 100%;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
 }

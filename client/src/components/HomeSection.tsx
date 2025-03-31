@@ -6,7 +6,7 @@ export function HomeSection() {
             <section id="home" className="home-section">
                 <div className="hero">
                     <div className="hero-banner">
-                        <h3>Hi, I'm Nyasha</h3>
+                        <h2>Hi, I'm Nyasha</h2>
                         <h1>Welcome to my portfolio</h1>
                         {/*    TODO: Add Education Info*/}
                     </div>
