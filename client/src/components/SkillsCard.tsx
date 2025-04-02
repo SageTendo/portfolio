@@ -1,5 +1,4 @@
 import '../styles/skill_card.css'
-import {ReactNode} from "react";
 
 type Skill = {
     icon: string;
@@ -7,15 +6,12 @@ type Skill = {
 }
 
 interface SkillCardProps {
-    icon: string;
     category: string;
     skills: Skill[];
 }
 
-export function SkillsCard({icon, category, skills}: SkillCardProps) {
-    if (!icon) {
-        icon = "https://img.icons8.com/color/48/000000/html-5.png";
-    }
+export function SkillsCard({category, skills}: SkillCardProps) {
+
 
     if (!category) {
         category = "Category";
