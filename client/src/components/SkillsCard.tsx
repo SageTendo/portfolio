@@ -17,7 +17,7 @@ export function SkillsCard({category, skills}: SkillCardProps) {
         category = "Category";
     }
 
-    if (!skills) {
+    if (!skills || !skills.length) {
         skills = [
             {"icon": "https://img.icons8.com/color/48/000000/html-5.png", "skill": "HTML"},
             {"icon": "https://img.icons8.com/color/48/000000/css3.png", "skill": "CSS"},

@@ -19,7 +19,8 @@ export function NavBar() {
                     <div className="logo">
                         {/*<img src={logo} alt="logo" width="48" height="32"></img>*/}
                     </div>
-                    <img className={toggle ? "menu-icon-active" : "menu-icon"} src={hamburger} width="48" height="32"></img>
+                    <img className={toggle ? "menu-icon-active" : "menu-icon"} src={hamburger} width="48"
+                         height="32"></img>
                 </button>
 
                 <div className={toggle ? "container active" : "container"}>

@@ -11,11 +11,11 @@ export function ProjectSection() {
             >
                 <h1>Projects</h1>
                 <div className="content-box">
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
-                    <ProjectCard/>
+                    <ProjectCard image="" title="" description="" technologies="" codeLink="" demoLink=""/>
+                    <ProjectCard image="" title="" description="" technologies="" codeLink="" demoLink=""/>
+                    <ProjectCard image="" title="" description="" technologies="" codeLink="" demoLink=""/>
+                    <ProjectCard image="" title="" description="" technologies="" codeLink="" demoLink=""/>
+                    <ProjectCard image="" title="" description="" technologies="" codeLink="" demoLink=""/>
                 </div>
             </section>
         </>

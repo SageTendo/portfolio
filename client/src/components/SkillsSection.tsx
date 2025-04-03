@@ -6,12 +6,13 @@ export function SkillsSection() {
             <section id="skills" className="skills-section">
                 <h1>Skills</h1>
                 <div className="content-box">
-                    <SkillsCard/>
-                    <SkillsCard/>
-                    <SkillsCard/>
-                    <SkillsCard/>
-                    <SkillsCard/>
-                    <SkillsCard/>
+                    <SkillsCard category="" skills={[]}/>
+                    <SkillsCard category="" skills={[]}/>
+                    <SkillsCard category="" skills={[]}/>
+                    <SkillsCard category="" skills={[]}/>
+                    <SkillsCard category="" skills={[]}/>
+                    <SkillsCard category="" skills={[]}/>
+                    <SkillsCard category="" skills={[]}/>
                 </div>
             </section>
         </>
