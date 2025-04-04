@@ -1,23 +1,26 @@
-
 .skills-card {
     display: flex;
     flex-direction: column;
     color: white;
-    background-color: #1c132d;
+    background-color: #1c142c;
     border-radius: 1rem;
     margin: 1rem;
     padding: 1rem;
 }
 
 .skills-card:hover {
-    background-color: #140226;
-    transition-duration: 0.5s;
+    background-color: #120023;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.44);
+    transition-duration: 1s;
 }
 
 .skills-title {
     font-weight: 900;
     padding-left: 1rem;
     margin: 0;
+    text-align: center;
+    align-items: center;
+    word-wrap: break-word;
 }
 
 .skills-list {
@@ -38,6 +41,13 @@
     padding: 0.2rem;
     margin: 0.5rem;
     border-radius: 1rem;
+    background: linear-gradient(10deg, rgb(72, 32, 131), rgba(255, 255, 255, 0.85) 1px,
+    rgba(36, 29, 68, 0.85) 1px, transparent 100%);
+}
+
+.skills-item:hover {
+    translate: 0 -8px;
+    transition-duration: 0.5s;
 }
 
 .skill-icon {
@@ -54,6 +64,7 @@
     font-size: 1.2rem;
     text-align: center;
 }
+
 
 @media (max-width: 1280px) {
     .skills-list {

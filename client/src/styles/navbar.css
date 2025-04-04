@@ -49,33 +49,27 @@
 
 .resume {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
-    width: 101px;
-    height: 40px;
-    background: #784aa4;
-    border-width: 2px 2px 4px 2px;
-    border-style: solid;
-    border-color: #2b1b3a;
-    border-radius: 0;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    background: #6a1ad2;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(152, 78, 255, 0.3);
+    transition: background 0.6s ease, transform 0.2s ease;
 }
 
 .resume:hover {
+    background: #321052;
+    transform: scale(1.02);
     cursor: pointer;
-    background: #4B2E66;
-    border-width: 2px 2px 4px 2px;
-    border-style: solid;
-    border-color: #050303;
-    border-radius: 0;
-    transition-duration: 0.3s;
 }
 
 .resume a {
+    color: #ffffff;
     text-decoration: none;
-    color: white;
-    font-size: 0.9rem;
     font-weight: 900;
 }
 
