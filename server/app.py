@@ -13,6 +13,7 @@ load_dotenv()
 app = FastAPI()
 origins = [
     "https://sagetendo.github.io",
+    "http://localhost:5173",
 ]
 
 app.add_middleware(
@@ -44,7 +45,7 @@ async def get_skills():
     skills = [
         {
             "title": prop.title.title[0].plain_text,
-            "image": prop.image.files[0].file.url if prop.image.files else "",
+            "image": prop.image.files[0].external.url if prop.image.files else "",
             "category": prop.category.multi_select[0].name
         } for prop in props
     ]
