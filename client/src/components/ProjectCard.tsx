@@ -1,5 +1,5 @@
 import '../styles/project_card.css'
-import cardBG from '../assets/projectCardDefault.jpg'
+import cardBG from '../assets/projectCardDefault2.jpg'
 
 interface ProjectCardProps {
     image: string;
