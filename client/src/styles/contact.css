@@ -107,7 +107,6 @@
 @media (max-width: 1024px) {
     .content {
         flex-direction: column;
-        width: 100%;
     }
 
     .contact-info{
