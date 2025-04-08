@@ -12,7 +12,7 @@ load_dotenv()
 
 app = FastAPI()
 origins = [
-    "https://sagetendo.github.io/portfolio",
+    "https://sagetendo.github.io",
 ]
 
 app.add_middleware(
