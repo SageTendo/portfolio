@@ -6,11 +6,12 @@
     border-radius: 1rem;
     margin: 1rem;
     padding: 1rem;
+    box-shadow: 12px 15px 25px rgba(0, 0, 0, 0.44);
+    transition-duration: 1s;
 }
 
 .skills-card:hover {
     background-color: #120023;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.44);
     transition-duration: 1s;
 }
 
@@ -43,9 +44,12 @@
     border-radius: 1rem;
     background: linear-gradient(10deg, rgb(72, 32, 131), rgba(255, 255, 255, 0.85) 1px,
     rgba(36, 29, 68, 0.85) 1px, transparent 100%);
+    transition-duration: 0.5s;
 }
 
 .skills-item:hover {
+    background: linear-gradient(10deg, rgb(46, 21, 82), rgba(255, 255, 255, 0.51) 1px,
+    rgba(70, 27, 178, 0.71) 1px, transparent 100%);
     translate: 0 -8px;
     transition-duration: 0.5s;
 }

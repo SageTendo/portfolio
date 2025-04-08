@@ -1,39 +1,19 @@
 import '../styles/project_card.css'
+import cardBG from '../assets/projectCardDefault.jpg'
 
 interface ProjectCardProps {
     image: string;
     title: string;
     description: string;
-    technologies: string;
+    tools: string[];
     codeLink: string;
     demoLink: string;
 }
 
-export function ProjectCard({image, title, description, technologies, codeLink, demoLink}: ProjectCardProps) {
+export function ProjectCard({image, title, description, tools, codeLink, demoLink}: ProjectCardProps) {
     if (!image) {
-        image = "https://cdn.pixabay.com/photo/2021/04/24/06/30/sunset-6203315_640.png";
+        image = cardBG;
     }
-
-    if (!title) {
-        title = "Project Title";
-    }
-
-    if (!description) {
-        description = "Project Description";
-    }
-
-    if (!technologies) {
-        technologies = "React Node Express MongoDB React Node Express MongoDB React Node";
-    }
-
-    if (!codeLink) {
-        codeLink = "https://github.com";
-    }
-
-    if (!demoLink) {
-        demoLink = "https://github.com";
-    }
-
 
     return (
         <>
@@ -46,18 +26,27 @@ export function ProjectCard({image, title, description, technologies, codeLink, 
                                 {description}
                     </span>
 
-                    <h2 className="project-subtitle">Technologies:</h2>
-                    <span className="project-tools">
-                                {technologies}
-                            </span>
+
+                    <div className="project-tools">
+                        {
+                            tools.map(
+                                (tool, index) => (
+                                    <span key={index} className="tool-badge">{tool}</span>
+                                )
+                            )
+                        }
+                    </div>
+
 
                     <div className="project-links">
                         <button className="project-button"
                                 onClick={() => window.open(codeLink, "_blank")}>View Code
                         </button>
-                        <button className="project-button"
-                                onClick={() => window.open(demoLink, "_blank")}>Live Demo
-                        </button>
+                        {demoLink &&
+                            <button className="project-button"
+                                    onClick={() => window.open(demoLink, "_blank")}>Live Demo
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
