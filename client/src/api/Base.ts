@@ -1,4 +1,4 @@
-const BaseUrl = "http://localhost:8000/api";
+const BaseUrl = "https://sagetendo-portfolio.vercel.app/api";
 
 export const Client = {
     get: async (path: string) => {

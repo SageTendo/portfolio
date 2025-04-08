@@ -4,7 +4,7 @@ from types import SimpleNamespace
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from notion_client import AsyncClient
+from notion_client import Client
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-notion = AsyncClient(options=dict(
+notion = Client(options=dict(
     auth=os.environ.get("NOTION_SECRET")
 ))
 
