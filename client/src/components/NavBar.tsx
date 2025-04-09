@@ -1,15 +1,33 @@
 import "../styles/navbar.css";
-// import logo from "../assets/logo.png"
 import hamburger from "../assets/hamburger-menu.svg"
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getResume} from "../api/Resume.ts";
 
 export function NavBar() {
     const [toggle, setToggle] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [resumeUrl, setResumeUrl] = useState("");
 
     const toggleMenu = () => {
         setToggle(!toggle);
     }
 
+    const toggleModal = () => {
+        setShowModal(!showModal);
+        if (showModal) {
+            document.body.style.overflow = "auto";
+        } else {
+            document.body.style.overflow = "hidden";
+        }
+    }
+
+    useEffect(() => {
+        getResume().then(
+            (response: string) => {
+                setResumeUrl(response)
+            }
+        );
+    }, []);
 
     return (
         <>
@@ -17,17 +35,12 @@ export function NavBar() {
 
                 <button aria-label="Toggle menu" className="hamburger" onClick={toggleMenu}>
                     <div className="logo">
-                        {/*<img src={logo} alt="logo" width="48" height="32"></img>*/}
                     </div>
                     <img className={toggle ? "menu-icon-active" : "menu-icon"} src={hamburger} width="48"
                          height="32"></img>
                 </button>
 
                 <div className={toggle ? "container active" : "container"}>
-                    {/*<div className="logo"*/}
-                    {/*     style={toggle ? {display: "none"} : {display: "flex"}}>*/}
-                    {/*    <img src={logo} alt="logo" width="48" height="32"></img>*/}
-                    {/*</div>*/}
                     <div className="links">
                         <a href="#home">Home</a>
                         <a href="#skills">Skills</a>
@@ -36,12 +49,23 @@ export function NavBar() {
                     </div>
 
                     <div className="actions">
-                        <button className="resume">
-                            <a href="#">My Resume</a>
+                        <button className="resume" onClick={toggleModal}>
+                            My Resume
                         </button>
                     </div>
                 </div>
             </nav>
+
+            {showModal && (
+                <div className="modal">
+                    <span className="close-modal" onClick={toggleModal}>&times;</span>
+                    <iframe
+                        src={resumeUrl}
+                        className="modal-content"
+                        title="Resume"
+                    />
+                </div>
+            )}
         </>
     );
 }

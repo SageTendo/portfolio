@@ -83,6 +83,23 @@ async def projects():
     return JSONResponse(return_data, headers=dict(cache_control="public, max-age=86400"))
 
 
+@app.get("/api/resume")
+async def resume():
+    response = notion.databases.query(
+        database_id=os.environ.get("NOTION_DOC_DATABASE_ID")
+    )
+
+    data = json.loads(json.dumps(response, sort_keys=False), object_hook=lambda d: SimpleNamespace(**d))
+    props = [result.properties for result in data.results]
+
+    return_data = [
+        {
+            "url": prop.file_urls.files[0].file.url if prop.file_urls.files else "",
+        } for prop in props if prop.title.title[0].plain_text.lower() == "resume"
+    ]
+    return JSONResponse(return_data)
+
+
 if __name__ == "__main__":
     import uvicorn
 
