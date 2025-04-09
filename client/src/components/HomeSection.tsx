@@ -12,14 +12,11 @@ export function HomeSection() {
                     </div>
                     <div className="hero-bio">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
-                            elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-                            commodo
-                            diam libero vitae erat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor
-                            interdum nulla, ut commodo diam libero vitae erat.Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis
-                            viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+                            I’m a software engineer who enjoys backend development — building systems, experimenting
+                            with APIs, and figuring out how things work by re-implementing them.
+                            <br/>
+                            When I’m not coding, you’ll find me exploring new music or making my own, watching anime,
+                            playing chess, competing in tactical FPS games, or skateboarding.
                         </p>
                     </div>
                 </div>

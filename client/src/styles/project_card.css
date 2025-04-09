@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     max-width: 560px;
-    min-height: 480px; /* Ensures all cards are the same height */
+    min-height: 480px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
     overflow: hidden;
@@ -32,36 +32,30 @@
     padding: 1.2rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Ensures content stretches to fill card */
+    flex-grow: 1;
 }
 
 .project-image {
     width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
+    max-height: 420px;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
 }
 
 .project-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     padding-left: 1rem;
-    font-weight: 700;
+    font-weight: 900;
     color: #fff;
     text-align: left;
-    margin-bottom: 1rem;
-}
-
-.project-subtitle {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #e0e0e0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
 }
 
 .project-description {
     font-weight: 400;
     color: #f0f0f0;
     line-height: 1.7;
-    flex-grow: 1; /* Makes the description take up available space */
+    flex-grow: 1;
     text-align: left;
     padding: 0 1rem;
     overflow: hidden;
@@ -71,8 +65,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
+    margin-top: 1.2rem;
+    padding: 0 1rem;
 }
 
 .tool-badge {

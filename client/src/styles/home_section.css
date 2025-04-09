@@ -38,8 +38,10 @@ h1 {
 }
 
 p {
+    color: white;
+    line-height: 2rem;
     font-weight: 400;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 .hero-bio {
