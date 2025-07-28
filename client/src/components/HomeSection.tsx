@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profileImg from "../assets/profile.png";
-import { details } from "../data/profile";
+import { socials } from "../data/profile";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 
 export function HomeSection() {
@@ -46,9 +46,9 @@ export function HomeSection() {
               className="hover:text-gray-400 border-2 p-2 text-2xl border-fuchsia-300 hover:bg-fuchsia-950 rounded-full transition-all duration-300 items-center flex gap-2"
             >
               <FontAwesomeIcon icon={faMailBulk} className="text-fuchsia-300" />
-              <span className="font-semibold text-muted mr-2">Contact Me</span>
+              <span className="font-semibold mr-2">Contact Me</span>
             </a>
-            {details.map((detail, index) => (
+            {socials.map((detail, index) => (
               <a
                 key={index}
                 href={detail.link}
@@ -60,7 +60,7 @@ export function HomeSection() {
                   icon={detail.icon}
                   className="text-fuchsia-300"
                 />
-                <span className="font-semibold text-muted mr-2">
+                <span className="font-semibold mr-2">
                   {detail.name}
                 </span>
               </a>

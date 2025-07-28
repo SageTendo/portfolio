@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { details } from "../data/profile";
+import { socials } from "../data/profile";
 
 const links = [
   { name: "Home", link: "#home" },
@@ -49,7 +48,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
           </button>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex w-full h-full justify-between items-center gap-8 px-10">
+          <div className="hidden lg:flex w-full h-full justify-between items-center gap-8 px-70">
             <div className="flex gap-4">
               {links.map((link, index) => (
                 <a
@@ -63,7 +62,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
             </div>
 
             <div className="flex items-center gap-4">
-              {details.map((detail, index) => (
+              {socials.map((detail, index) => (
                 <a
                   key={index}
                   href={detail.link}
@@ -101,7 +100,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
             ))}
 
             <div className="flex gap-4">
-              {details.map((detail, index) => (
+              {socials.map((detail, index) => (
                 <a key={index} href={detail.link}>
                   <FontAwesomeIcon
                     icon={detail.icon}
