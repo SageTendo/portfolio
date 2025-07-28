@@ -1,6 +1,5 @@
 import { NavBar } from "./components/NavBar.tsx";
 import { HomeSection } from "./components/HomeSection.tsx";
-import { SkillsSection } from "./components/SkillsSection.tsx";
 import { ProjectSection } from "./components/ProjectSection.tsx";
 import { Contact } from "./components/Contact.tsx";
 import { useEffect, useState } from "react";
@@ -11,19 +10,7 @@ import {
   SCREEN_SIZE,
   useDetectScreenType,
 } from "./hooks/useDetectScreenType.ts";
-
-const details = [
-  {
-    name: "GitHub",
-    link: "https://github.com/SageTendo",
-    icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
-  },
-  {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/in/nyasha-zishiri-a2bb68257/",
-    icon: "https://cdn-icons-png.flaticon.com/512/174/174857.png",
-  },
-];
+import AboutSection from "./components/AboutSection.tsx";
 
 function App() {
   const isMobile = useDetectScreenType(SCREEN_SIZE.LARGE);
@@ -90,7 +77,7 @@ function App() {
 
       <NavBar toggleModal={handleToggleResumeModal} />
       <HomeSection />
-      <SkillsSection />
+      <AboutSection />
       <ProjectSection />
       <Contact />
     </div>
