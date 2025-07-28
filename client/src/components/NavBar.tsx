@@ -2,25 +2,13 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { details } from "../data/profile";
 
 const links = [
   { name: "Home", link: "#home" },
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
   { name: "Contact", link: "#contact" },
-];
-
-const details = [
-  {
-    name: "GitHub",
-    link: "https://github.com/SageTendo",
-    icon: faGithub,
-  },
-  {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/in/nyasha-zishiri-a2bb68257/",
-    icon: faLinkedin,
-  },
 ];
 
 interface NavBarProps {
