@@ -1,71 +1,137 @@
-import "../styles/navbar.css";
-import hamburger from "../assets/hamburger-menu.svg"
-import {useEffect, useState} from "react";
-import {getResume} from "../api/Resume.ts";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-export function NavBar() {
-    const [toggle, setToggle] = useState(false);
-    const [showModal, setShowModal] = useState(false);
-    const [resumeUrl, setResumeUrl] = useState("");
+const links = [
+  { name: "Home", link: "#home" },
+  { name: "About", link: "#about" },
+  { name: "Projects", link: "#projects" },
+  { name: "Contact", link: "#contact" },
+];
 
-    const toggleMenu = () => {
-        setToggle(!toggle);
-    }
+const details = [
+  {
+    name: "GitHub",
+    link: "https://github.com/SageTendo",
+    icon: faGithub,
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/nyasha-zishiri-a2bb68257/",
+    icon: faLinkedin,
+  },
+];
 
-    const toggleModal = () => {
-        setShowModal(!showModal);
-        if (showModal) {
-            document.body.style.overflow = "auto";
-        } else {
-            document.body.style.overflow = "hidden";
-        }
-    }
+interface NavBarProps {
+  toggleModal: () => void;
+}
 
-    useEffect(() => {
-        getResume().then(
-            (response: string) => {
-                setResumeUrl(response)
-            }
-        );
-    }, []);
+export function NavBar({ toggleModal }: NavBarProps) {
+  const [toggle, setToggle] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const toggleMenu = () => setToggle(!toggle);
 
-    return (
-        <>
-            <nav className="navbar" role="navigation">
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-                <button aria-label="Toggle menu" className="hamburger" onClick={toggleMenu}>
-                    <div className="logo">
-                    </div>
-                    <img className={toggle ? "menu-icon-active" : "menu-icon"} src={hamburger} width="48"
-                         height="32"></img>
-                </button>
+  const navClass = isScrolled
+    ? "bg-black/30 backdrop-blur-2xl shadow-lg"
+    : "bg-black/30 md:bg-transparent backdrop-blur-2xl shadow-none";
 
-                <div className={toggle ? "container active" : "container"}>
-                    <div className="links">
-                        <a href="#home">Home</a>
-                        <a href="#skills">Skills</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#contact">Contact Me</a>
-                    </div>
+  return (
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-500 ${navClass}`}
+      >
+        <div className="flex justify-end lg:justify-normal px-6 py-4 md:px-10">
+          {/* Hamburger for mobile */}
+          <button
+            aria-label="Toggle menu"
+            className="lg:hidden"
+            onClick={toggleMenu}
+          >
+            <FontAwesomeIcon
+              icon={toggle ? faClose : faBars}
+              className="text-white text-2xl"
+            />
+          </button>
 
-                    <div className="actions">
-                        <button className="resume" onClick={toggleModal}>
-                            My Resume
-                        </button>
-                    </div>
-                </div>
-            </nav>
+          {/* Desktop links */}
+          <div className="hidden lg:flex w-full h-full justify-between items-center gap-8 px-10">
+            <div className="flex gap-4">
+              {links.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.link}
+                  className="text-xl font-medium hover:text-fuchsia-700 transition-all duration-300"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
 
-            {showModal && (
-                <div className="modal">
-                    <span className="close-modal" onClick={toggleModal}>&times;</span>
-                    <iframe
-                        src={resumeUrl}
-                        className="modal-content"
-                        title="Resume"
-                    />
-                </div>
-            )}
-        </>
-    );
+            <div className="flex items-center gap-4">
+              {details.map((detail, index) => (
+                <a
+                  key={index}
+                  href={detail.link}
+                  className="hover:text-gray-400 transition-all duration-300"
+                >
+                  <FontAwesomeIcon
+                    icon={detail.icon}
+                    className="text-fuchsia-300 border-2 border-fuchsia-300 hover:bg-fuchsia-950 rounded-full p-2 text-2xl transition-all duration-300"
+                  />
+                </a>
+              ))}
+
+              <button
+                className="border-2 rounded-full px-4 py-2 transition-all duration-700 hover:bg-fuchsia-700"
+                onClick={toggleModal}
+              >
+                My Resume
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {toggle && (
+          <div className="flex flex-col items-center gap-6 px-6 pb-6 lg:hidden animate-slide-down">
+            {links.map((link, index) => (
+              <a
+                key={index}
+                href={link.link}
+                className="hover:text-gray-400 transition-all duration-300 text-lg"
+                onClick={() => setToggle(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+
+            <div className="flex gap-4">
+              {details.map((detail, index) => (
+                <a key={index} href={detail.link}>
+                  <FontAwesomeIcon
+                    icon={detail.icon}
+                    className="text-3xl transition-all duration-300"
+                  />
+                </a>
+              ))}
+            </div>
+
+            <button
+              className="border rounded-full text-xl px-4 py-2 transition-all duration-700 hover:bg-fuchsia-950"
+              onClick={toggleModal}
+            >
+              My Resume
+            </button>
+          </div>
+        )}
+      </nav>
+    </>
+  );
 }
