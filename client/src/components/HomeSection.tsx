@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import profileImg from "../assets/profile.png";
+import profileImg from "../assets/images/profile.png";
 import { socials } from "../data/profile";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 
