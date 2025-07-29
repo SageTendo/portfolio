@@ -48,7 +48,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
           </button>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex w-full h-full justify-between items-center gap-8 px-70">
+          <div className="hidden lg:flex w-full h-full justify-between items-center gap-8 md:px-70 lg:px-0">
             <div className="flex gap-4">
               {links.map((link, index) => (
                 <a
