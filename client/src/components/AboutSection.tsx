@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import InfoCard from "./shared/InfoCard";
 import SectionCard from "./shared/SectionCard";
 import { CategoryResponseObject, getSkills } from "../api/Skills";
-import SkillsCard from "./shared/SkillsCard";
 import { education, interests } from "../data/profile";
 import { SCREEN_SIZE, useDetectScreenType } from "../hooks/useDetectScreenType";
 

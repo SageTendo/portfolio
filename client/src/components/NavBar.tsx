@@ -79,7 +79,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
                 className="border-2 rounded-full px-4 py-2 transition-all duration-700 hover:bg-fuchsia-700"
                 onClick={toggleModal}
               >
-                My Resume
+                Resume/CV
               </button>
             </div>
           </div>
@@ -114,7 +114,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
               className="border rounded-full text-xl px-4 py-2 transition-all duration-700 hover:bg-fuchsia-950"
               onClick={toggleModal}
             >
-              My Resume
+              Resume/CV
             </button>
           </div>
         )}
