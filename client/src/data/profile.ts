@@ -34,6 +34,14 @@ export const education = [
   },
 ];
 
+export const interests = [
+  "skateboarding",
+  "diving into music production",
+  "binge watching thrillers & sci-fi",
+  "playing video games",
+  "finding new music to curate",
+];
+
 export const socials = [
   {
     name: "GitHub",

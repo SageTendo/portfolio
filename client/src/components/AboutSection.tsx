@@ -3,13 +3,32 @@ import InfoCard from "./shared/InfoCard";
 import SectionCard from "./shared/SectionCard";
 import { CategoryResponseObject, getSkills } from "../api/Skills";
 import SkillsCard from "./shared/SkillsCard";
-import { education } from "../data/profile";
+import { education, interests } from "../data/profile";
 import { SCREEN_SIZE, useDetectScreenType } from "../hooks/useDetectScreenType";
 
 function AboutSection() {
   const isMpbile = useDetectScreenType(SCREEN_SIZE.LARGE);
   const [skillsCategories, setData] = useState<CategoryResponseObject[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [index, setIndex] = useState(0);
+  const [interest, setInterest] = useState(interests[0]);
+  const [interestVisible, setInterestVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setInterestVisible(false);
+
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % interests.length);
+        setInterestVisible(true);
+      }, 500);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    setInterest(interests[index]);
+  }, [index]);
 
   useEffect(() => {
     getSkills().then((response: CategoryResponseObject[]) => {
@@ -28,7 +47,11 @@ function AboutSection() {
                 Hi, my name is Nyasha. I'm a software engineer with a desire to
                 explore and turn random ideas into code. It usually starts with
                 - "I wonder if I can make
-                <strong> [Insert Idea Here]</strong>".
+                <strong className="text-fuchsia-200">
+                  {" "}
+                  [Insert Idea Here]
+                </strong>
+                ".
               </p>
 
               <p>
@@ -45,17 +68,52 @@ function AboutSection() {
               </p>
               <p>
                 Fast forward to today, with having graduated with a CS degree,
-                my interest in programming has only increased.
+                my interest in programming and technology has only increased.
+                <br />
+                When I'm not coding, you can find me{" "}
+                <strong
+                  className={`transition-opacity duration-500 text-fuchsia-200 ease-in-out ${
+                    interestVisible ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {interest}.
+                </strong>
               </p>
             </div>
           </InfoCard>
 
-          <InfoCard title="Interests">
-            <p>
-              When I'm not coding, I enjoy watching movies, playing video games,
-              and learning new things.
-            </p>
-          </InfoCard>
+          {/* Skills Section */}
+          <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-fuchsia-300 mb-6">
+              Skills
+            </h2>
+
+            {/* Skills */}
+            {skillsCategories.map((category) => (
+              <div key={category.name} className="flex-1 mb-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-fuchsia-300/75">
+                  {category.name}
+                </h2>
+                <div className="grid grid-cols-2 md:flex md:flex-row md:w-4/5 flex-wrap mt-2 gap-2">
+                  {category.skills.map((skill) => (
+                    <div
+                      key={skill.title}
+                      className="flex flex-col md:flex-row gap-2 p-6 md:p-3 bg-fuchsia-100/15
+                      backdrop-blur-2xl border border-gray-300/50 rounded-lg shadow-2xl items-center"
+                    >
+                      <img src={skill.image} className="w-6 h-6" />
+                      <span
+                        key={skill.title}
+                        className="text-base font-semibold"
+                      >
+                        {skill.title}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </SectionCard>
 
         {/* Education Section */}
@@ -101,7 +159,7 @@ function AboutSection() {
                         {edu.coursework.map((course, cIndex) => (
                           <span
                             key={`course-desktop-${index}-${cIndex}`}
-                            className="text-sm text-gray-400"
+                            className="text-base text-gray-400"
                           >
                             {course}{" "}
                             {cIndex !== edu.coursework.length - 1 && "|"}
