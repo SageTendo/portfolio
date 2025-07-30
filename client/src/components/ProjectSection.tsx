@@ -21,21 +21,21 @@ export function ProjectSection() {
   const hasProjects = projects.length > 0;
 
   return (
-    <section id="projects" className="w-full px-6 py-20 text-white">
-      <h3 className="px-4 max-w-7xl mx-auto text-white mb-2">Projects</h3>
-      <h6 className="px-4 max-w-7xl mx-auto text-fuchsia-200/70 mb-10">
+    <section id="projects" className="w-full px-4 py-20 text-white">
+      <h3 className="px-2 max-w-7xl mx-auto text-white tracking-tight mb-2">Projects</h3>
+      <h6 className="px-2 max-w-7xl mx-auto text-fuchsia-200/70 mb-10">
         Some of the projects I've enjoyed working on...
       </h6>
       <div className="flex flex-col max-w-7xl mx-auto items-center justify-center space-y-10">
         {!hasProjects ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 px-2">
             <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 px-2">
               {projects.map((project, index) => (
                 <ProjectCard
                   key={index}
