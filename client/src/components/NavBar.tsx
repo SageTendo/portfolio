@@ -1,26 +1,13 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { socials } from "../data/profile";
 
 const links = [
   { name: "Home", link: "#home" },
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
   { name: "Contact", link: "#contact" },
-];
-
-const details = [
-  {
-    name: "GitHub",
-    link: "https://github.com/SageTendo",
-    icon: faGithub,
-  },
-  {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/in/nyasha-zishiri-a2bb68257/",
-    icon: faLinkedin,
-  },
 ];
 
 interface NavBarProps {
@@ -45,7 +32,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-500 ${navClass}`}
+        className={`fixed top-0 left-0 right-0 z-50 text-gray-300 transition-all duration-500 ${navClass}`}
       >
         <div className="flex justify-end lg:justify-normal px-6 py-4 md:px-10">
           {/* Hamburger for mobile */}
@@ -61,13 +48,13 @@ export function NavBar({ toggleModal }: NavBarProps) {
           </button>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex w-full h-full justify-between items-center gap-8 px-10">
+          <div className="hidden lg:flex w-full h-full justify-between items-center md:px-70 lg:px-0">
             <div className="flex gap-4">
               {links.map((link, index) => (
                 <a
                   key={index}
                   href={link.link}
-                  className="text-xl font-medium hover:text-fuchsia-700 transition-all duration-300"
+                  className="text-lg font-semibold hover:text-fuchsia-300 transition-all duration-300"
                 >
                   {link.name}
                 </a>
@@ -75,7 +62,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
             </div>
 
             <div className="flex items-center gap-4">
-              {details.map((detail, index) => (
+              {socials.map((detail, index) => (
                 <a
                   key={index}
                   href={detail.link}
@@ -89,10 +76,10 @@ export function NavBar({ toggleModal }: NavBarProps) {
               ))}
 
               <button
-                className="border-2 rounded-full px-4 py-2 transition-all duration-700 hover:bg-fuchsia-700"
+                className="font-extrabold border-2 rounded-full px-4 py-2 transition-all duration-700 hover:bg-fuchsia-700"
                 onClick={toggleModal}
               >
-                My Resume
+                Resume/CV
               </button>
             </div>
           </div>
@@ -113,7 +100,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
             ))}
 
             <div className="flex gap-4">
-              {details.map((detail, index) => (
+              {socials.map((detail, index) => (
                 <a key={index} href={detail.link}>
                   <FontAwesomeIcon
                     icon={detail.icon}
@@ -127,7 +114,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
               className="border rounded-full text-xl px-4 py-2 transition-all duration-700 hover:bg-fuchsia-950"
               onClick={toggleModal}
             >
-              My Resume
+              Resume/CV
             </button>
           </div>
         )}

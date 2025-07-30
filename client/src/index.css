@@ -1,4 +1,28 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl xl:text-4xl 2xl:text-5xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl xl:text-3xl 2xl:text-4xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg sm:text-xl xl:text-2xl 2xl:text-3xl font-medium;
+  }
+
+  h5 {
+    @apply text-base sm:text-lg xl:text-xl 2xl:text-2xl font-medium;
+  }
+
+  h6 {
+    @apply text-sm sm:text-base xl:text-lg 2xl:text-xl font-medium;
+  }
+}
