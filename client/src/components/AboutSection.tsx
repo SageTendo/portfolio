@@ -20,7 +20,7 @@ function AboutSection() {
         setIndex((prev) => (prev + 1) % interests.length);
         setInterestVisible(true);
       }, 500);
-    }, 5000);
+    }, 4500);
 
     return () => clearInterval(interval);
   }, []);
@@ -83,16 +83,16 @@ function AboutSection() {
 
           {/* Skills Section */}
           <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
-            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-fuchsia-300 mb-6">
+            <h4 className="font-semibold text-fuchsia-300 mb-6">
               Skills
-            </h2>
+            </h4>
 
             {/* Skills */}
             {skillsCategories.map((category) => (
               <div key={category.name} className="flex-1 mb-4">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-fuchsia-300/75">
+                <h5 className="text-fuchsia-300/75">
                   {category.name}
-                </h2>
+                </h5>
                 <div className="grid grid-cols-2 md:flex md:flex-row md:w-4/5 flex-wrap mt-2 gap-2">
                   {category.skills.map((skill) => (
                     <div
@@ -123,23 +123,25 @@ function AboutSection() {
                 key={`edu-${index}`}
                 className="flex flex-col gap-2 px-6 border-l-4 border-fuchsia-400/50"
               >
-                <h2 className="flex flex-col text-lg sm:text-xl md:text-2xl font-bold mr-auto text-fuchsia-300">
+                <h5 className="flex flex-col font-bold mr-auto text-fuchsia-300">
                   <span>{edu.title}</span>
-                  <span className="text-sm text-fuchsia-300/80 font-medium">
+                  <span className="text-base sm:text-sm xl:text-base 2xl:text-lg text-fuchsia-300/80 font-medium">
                     {edu.date}
                   </span>
-                </h2>
+                </h5>
                 <div className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl text-left">
                   <div className="flex flex-col sm:flex-row gap-2">
                     <a
-                      className="text-indigo-400 font-semibold hover:text-fuchsia-400 transition duration-800"
+                      className="
+                      text-sm sm:text-base md:text-lg lg:text-xl xl:text-lg 2xl:text-xl
+                      text-indigo-400 font-semibold hover:text-fuchsia-400 transition duration-800"
                       href="https://www.sun.ac.za/english"
                     >
                       {edu.subtitle}
                     </a>
                   </div>
                   <p>
-                    <strong className="text-base">Coursework:</strong>
+                    <span className="text-md sm:text-sm md:text-base font-extrabold">Coursework:</span>
                     {isMpbile ? (
                       // Mobile
                       <span className="list-disc list-inside">
@@ -158,7 +160,7 @@ function AboutSection() {
                         {edu.coursework.map((course, cIndex) => (
                           <span
                             key={`course-desktop-${index}-${cIndex}`}
-                            className="text-base text-gray-400"
+                            className="text-base 2xl:text-lg text-gray-400"
                           >
                             {course}{" "}
                             {cIndex !== edu.coursework.length - 1 && "|"}
