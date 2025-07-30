@@ -1,4 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cardBG from "../assets/images/projectCardDefault2.jpg";
+import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
+import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 
 interface ProjectCardProps {
   image: string;
@@ -17,67 +20,55 @@ export function ProjectCard({
   codeLink,
   demoLink,
 }: ProjectCardProps) {
-  if (!image) {
-    image = cardBG;
-  }
-
   return (
-    <>
-      <div
-        className="group flex flex-col lg:flex-row bg-white/5
-        border border-purple-400 rounded-2xl overflow-hidden
-        shadow-lg transition-transform hover:-translate-y-2 duration-300 max-w-7xl mx-auto"
-      >
-        {/* Image Section */}
-        <div className="w-full lg:w-1/2 max-h-72 lg:max-h-none overflow-hidden">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover object-center"
-          />
+    <div
+      className="flex flex-col bg-white/5 border border-purple-400 rounded-2xl overflow-hidden shadow-lg duration-500 h-[36rem] w-full"
+    >
+      {/* Image */}
+      <div className="h-[15rem] w-full overflow-hidden">
+        <img
+          src={image || cardBG}
+          alt={title}
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col justify-between flex-1 p-4 gap-4">
+        <div className="flex flex-col gap-4 flex-grow">
+          <h5 className="font-extrabold text-fuchsia-300">{title}</h5>
+          <p className="text-gray-200 text-sm leading-relaxed">{description}</p>
+          <div className="flex flex-wrap gap-2">
+            {tools.map((tool, index) => (
+              <span
+                key={index}
+                className="text-sm px-3 py-1 rounded-full border border-fuchsia-400 text-fuchsia-200 bg-fuchsia-800/15"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Content Section */}
-        <div className="flex flex-col justify-between p-4 gap-4 w-full lg:w-1/2">
-          {/* Title + Description */}
-          <div className="flex flex-col gap-4">
-            <h1 className="text-2xl font-bold text-fuchsia-300">{title}</h1>
-            <p className="text-gray-200 text-base leading-relaxed">
-              {description}
-            </p>
-
-            {/* Tools/Tech Stack */}
-            <div className="flex flex-wrap gap-2">
-              {tools.map((tool, index) => (
-                <span
-                  key={index}
-                  className="text-sm px-3 py-1 rounded-full border border-fuchsia-400 text-fuchsia-200 bg-fuchsia-800/20"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Buttons */}
-          <div className="flex gap-4 mt-2">
+        <div className="flex flex-col sm:flex-row justify-between pt-2">
+          <button
+            className="px-4 py-2 text-lg cursor-pointer rounded-lg text-fuchsia-200 font-semibold hover:text-fuchsia-400 transition-colors duration-500"
+            onClick={() => window.open(codeLink, "_blank")}
+          >
+            <FontAwesomeIcon icon={faGithubAlt} className="mr-2" />
+            GitHub
+          </button>
+          {demoLink && (
             <button
-              className="px-4 py-2 rounded-lg bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700 transition-colors"
-              onClick={() => window.open(codeLink, "_blank")}
+              className="px-4 py-2 text-lg cursor-pointer rounded-lg text-indigo-200 font-semibold hover:text-indigo-400 transition-colors duration-500"
+              onClick={() => window.open(demoLink, "_blank")}
             >
-              View Code
+              <FontAwesomeIcon icon={faExternalLink} className="mr-2" />
+              Live Demo
             </button>
-            {demoLink && (
-              <button
-                className="px-4 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors"
-                onClick={() => window.open(demoLink, "_blank")}
-              >
-                Live Demo
-              </button>
-            )}
-          </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
