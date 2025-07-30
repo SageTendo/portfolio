@@ -1,7 +1,7 @@
 import { NavBar } from "./components/NavBar.tsx";
 import { HomeSection } from "./components/HomeSection.tsx";
 import { ProjectSection } from "./components/ProjectSection.tsx";
-import { Contact } from "./components/Contact.tsx";
+import { ContactSection } from "./components/ContactSection.tsx";
 import { useEffect, useState } from "react";
 import { getResume } from "./api/Resume.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,7 @@ import {
   useDetectScreenType,
 } from "./hooks/useDetectScreenType.ts";
 import AboutSection from "./components/AboutSection.tsx";
+import { portfolioLink } from "./data/profile.ts";
 
 function App() {
   const isMobile = useDetectScreenType(SCREEN_SIZE.LARGE);
@@ -26,13 +27,8 @@ function App() {
 
   return (
     <div
-      className="
-        flex flex-col 
-        min-h-screen w-full 
-        text-[#050303] font-sans font-normal leading-relaxed
-        bg-gradient-to-r from-[#14081f]  to-[#573b6f]
-        scroll-smooth overflow-hidden
-      "
+      className="flex flex-col min-h-screen w-full text-[#050303] font-sans font-normal leading-relaxed
+      bg-gradient-to-r from-[#14081f]  to-[#573b6f] scroll-smooth overflow-hidden"
     >
       {/* Resume Modal */}
       {toggleResumeModal && (
@@ -79,7 +75,22 @@ function App() {
       <HomeSection />
       <AboutSection />
       <ProjectSection />
-      <Contact />
+      <ContactSection />
+
+      {/* Footer */}
+      <footer className="flex flex-col items-center justify-center px-6 w-full h-25 gap-1 border-purple-400">
+        <p className="text-gray-300 text-sm">
+          Portfolio developed by Nyasha Zishiri
+        </p>
+        <a
+          href={portfolioLink}
+          target="_blank"
+          rel="noreferrer"
+          className="text-fuchsia-300 text-xs ml-2 hover:text-fuchsia-400 border rounded p-1 transition ease-in-out duration-300"
+        >
+          Source Code
+        </a>
+      </footer>
     </div>
   );
 }

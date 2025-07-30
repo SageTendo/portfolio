@@ -36,21 +36,28 @@ export const education = [
 
 export const interests = [
   "skateboarding",
-  "diving into music production",
+  "diving into music production & new music",
   "binge watching thrillers & sci-fi",
   "playing video games",
-  "finding new music to curate",
+  "playing chess",
+  "looking for something new to experience",
 ];
 
 export const socials = [
-  {
-    name: "GitHub",
-    link: "https://github.com/SageTendo",
-    icon: faGithub,
-  },
   {
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/nyasha-zishiri-a2bb68257/",
     icon: faLinkedin,
   },
+  {
+    name: "GitHub",
+    link: "https://github.com/SageTendo",
+    icon: faGithub,
+  },
 ];
+
+export const portfolioLink = "https://github.com/SageTendo/portfolio/"
+export const email = "nz.zishiri@gmail.com"
+export const mailTo = `mailto:${email}`
+export const formSubmitLink =
+  "https://formsubmit.co/eadfd1c0bf25f87cdf08c5811c5a8865";
