@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cardBG from "../assets/images/projectCardDefault2.jpg";
+import cardBG from "../../assets/images/projectCardDefault2.jpg";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,17 +13,15 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({
-  image,
-  title,
-  description,
-  tools,
-  codeLink,
-  demoLink,
+  image = "",
+  title = "",
+  description = "",
+  tools = [],
+  codeLink = "",
+  demoLink = "",
 }: ProjectCardProps) {
   return (
-    <div
-      className="flex flex-col bg-white/5 border border-purple-400 rounded-2xl overflow-hidden shadow-lg duration-500 h-[36rem] w-full"
-    >
+    <div className="flex flex-col bg-white/5 border border-purple-400 rounded-2xl overflow-hidden shadow-lg duration-500 h-[36rem] w-full">
       {/* Image */}
       <div className="h-[15rem] w-full overflow-hidden">
         <img
