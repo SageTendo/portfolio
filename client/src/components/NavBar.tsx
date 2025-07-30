@@ -32,7 +32,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-500 ${navClass}`}
+        className={`fixed top-0 left-0 right-0 z-50 text-gray-300 transition-all duration-500 ${navClass}`}
       >
         <div className="flex justify-end lg:justify-normal px-6 py-4 md:px-10">
           {/* Hamburger for mobile */}
@@ -48,13 +48,13 @@ export function NavBar({ toggleModal }: NavBarProps) {
           </button>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex w-full h-full justify-between items-center gap-8 md:px-70 lg:px-0">
+          <div className="hidden lg:flex w-full h-full justify-between items-center md:px-70 lg:px-0">
             <div className="flex gap-4">
               {links.map((link, index) => (
                 <a
                   key={index}
                   href={link.link}
-                  className="text-xl font-medium hover:text-fuchsia-700 transition-all duration-300"
+                  className="text-lg font-semibold hover:text-fuchsia-300 transition-all duration-300"
                 >
                   {link.name}
                 </a>
@@ -76,7 +76,7 @@ export function NavBar({ toggleModal }: NavBarProps) {
               ))}
 
               <button
-                className="border-2 rounded-full px-4 py-2 transition-all duration-700 hover:bg-fuchsia-700"
+                className="font-extrabold border-2 rounded-full px-4 py-2 transition-all duration-700 hover:bg-fuchsia-700"
                 onClick={toggleModal}
               >
                 Resume/CV
