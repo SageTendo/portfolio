@@ -28,6 +28,9 @@ notion = Client(options=dict(
     auth=os.environ.get("NOTION_SECRET")
 ))
 
+CACHE_HEADERS = dict(
+    cache_control="public, max-age=3600, s-maxage=3600, stale-while-revalidate=600"
+)
 
 @app.get("/")
 async def root():
@@ -40,24 +43,29 @@ async def get_skills():
         database_id=os.environ.get("NOTION_SKILLS_DATABASE_ID")
     )
 
-    data = json.loads(json.dumps(response, sort_keys=True), object_hook=lambda d: SimpleNamespace(**d))
+    data = json.loads(
+        json.dumps(response, sort_keys=True), object_hook=lambda d: SimpleNamespace(**d)
+    )
     props = [result.properties for result in data.results]
     skills = [
         {
             "title": prop.title.title[0].plain_text,
             "image": prop.image.files[0].external.url if prop.image.files else "",
-            "category": prop.category.multi_select[0].name
-        } for prop in props
+            "category": prop.category.multi_select[0].name,
+        }
+        for prop in props
     ]
 
     return_data = {
         "categories": [
             {
                 "name": category,
-                "skills": [skill for skill in skills if skill["category"] == category]
-            } for category in set([skill["category"] for skill in skills])
-        ]}
-    return JSONResponse(return_data, headers=dict(cache_control="public, max-age=86400"))
+                "skills": [skill for skill in skills if skill["category"] == category],
+            }
+            for category in set([skill["category"] for skill in skills])
+        ]
+    }
+    return JSONResponse(return_data, headers=CACHE_HEADERS)
 
 
 @app.get("/api/projects")
@@ -66,7 +74,10 @@ async def projects():
         database_id=os.environ.get("NOTION_PROJECTS_DATABASE_ID")
     )
 
-    data = json.loads(json.dumps(response, sort_keys=False), object_hook=lambda d: SimpleNamespace(**d))
+    data = json.loads(
+        json.dumps(response, sort_keys=False),
+        object_hook=lambda d: SimpleNamespace(**d),
+    )
     props = [result.properties for result in data.results]
 
     return_data = {
@@ -77,10 +88,12 @@ async def projects():
                 "tools": [tool.name for tool in prop.tools.multi_select],
                 "image": prop.image.files[0].file.url if prop.image.files else "",
                 "github": prop.github.url if prop.github.url else "",
-                "demo": prop.demo.url if prop.demo.url else ""
-            } for prop in props
-        ]}
-    return JSONResponse(return_data, headers=dict(cache_control="public, max-age=86400"))
+                "demo": prop.demo.url if prop.demo.url else "",
+            }
+            for prop in props
+        ]
+    }
+    return JSONResponse(return_data, headers=CACHE_HEADERS)
 
 
 @app.get("/api/resume")
@@ -89,13 +102,18 @@ async def resume():
         database_id=os.environ.get("NOTION_DOC_DATABASE_ID")
     )
 
-    data = json.loads(json.dumps(response, sort_keys=False), object_hook=lambda d: SimpleNamespace(**d))
+    data = json.loads(
+        json.dumps(response, sort_keys=False),
+        object_hook=lambda d: SimpleNamespace(**d),
+    )
     props = [result.properties for result in data.results]
 
     return_data = [
         {
             "url": prop.file_urls.files[0].file.url if prop.file_urls.files else "",
-        } for prop in props if prop.title.title[0].plain_text.lower() == "resume"
+        }
+        for prop in props
+        if prop.title.title[0].plain_text.lower() == "resume"
     ]
     return JSONResponse(return_data)
 
