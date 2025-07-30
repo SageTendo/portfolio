@@ -6,15 +6,10 @@ import { useEffect, useState } from "react";
 import { getResume } from "./api/Resume.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-import {
-  SCREEN_SIZE,
-  useDetectScreenType,
-} from "./hooks/useDetectScreenType.ts";
 import AboutSection from "./components/AboutSection.tsx";
 import { portfolioLink } from "./data/profile.ts";
 
 function App() {
-  const isMobile = useDetectScreenType(SCREEN_SIZE.LARGE);
   const [resumeUrl, setResumeUrl] = useState("");
   const [toggleResumeModal, setIsResumeModalOpen] = useState(false);
   const handleToggleResumeModal = () => {
@@ -51,22 +46,11 @@ function App() {
             </div>
 
             {/* PDF Viewer  */}
-            {!isMobile && (
-              <iframe
-                src={resumeUrl}
-                title="Resume"
-                className="w-full h-full border-none"
-              />
-            )}
-
-            {/* Mobile View */}
-            {isMobile && (
-              <iframe
-                src={`https://docs.google.com/viewer?url=${resumeUrl}&embedded=true`}
-                title="Resume"
-                className="w-full h-full border-none"
-              ></iframe>
-            )}
+            <iframe
+              src={resumeUrl}
+              title="Resume"
+              className="w-full h-full border-none"
+            />
           </div>
         </div>
       )}
