@@ -25,8 +25,6 @@ app.add_middleware(
 )
 
 notion = AsyncClient(options=dict(auth=os.environ.get("NOTION_SECRET")))
-CACHE_HEADERS = dict(cache_control="public, max-age=3600")
-
 
 @app.get("/")
 async def root():
@@ -62,7 +60,7 @@ async def get_skills():
             for category in set([skill["category"] for skill in skills])
         ]
     }
-    return JSONResponse(return_data, headers=CACHE_HEADERS)
+    return JSONResponse(return_data)
 
 
 @app.get("/api/projects")
@@ -91,7 +89,7 @@ async def projects():
             for prop in props
         ]
     }
-    return JSONResponse(return_data, headers=CACHE_HEADERS)
+    return JSONResponse(return_data)
 
 
 @app.get("/api/resume")
