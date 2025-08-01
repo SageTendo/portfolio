@@ -2,23 +2,27 @@ import { NavBar } from "./components/NavBar.tsx";
 import { HomeSection } from "./components/HomeSection.tsx";
 import { ProjectSection } from "./components/ProjectSection.tsx";
 import { ContactSection } from "./components/ContactSection.tsx";
-import { useEffect, useState } from "react";
-import { getResume } from "./api/Resume.ts";
+import { useState } from "react";
+import { getResume } from "./lib/api/Resume.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import AboutSection from "./components/AboutSection.tsx";
 import { portfolioLink } from "./data/profile.ts";
+import { useQuery } from "@tanstack/react-query";
 
 function App() {
-  const [resumeUrl, setResumeUrl] = useState("");
+  const { data, error, isLoading, isSuccess, isError, refetch } = useQuery({
+    queryKey: ["resume"],
+    queryFn: getResume,
+    enabled: false,
+  });
+
   const [toggleResumeModal, setIsResumeModalOpen] = useState(false);
   const handleToggleResumeModal = () => {
-    setIsResumeModalOpen(!toggleResumeModal);
+    const willOpen = !toggleResumeModal;
+    setIsResumeModalOpen(willOpen);
+    if (willOpen) refetch();
   };
-
-  useEffect(() => {
-    getResume().then((response: string) => setResumeUrl(response));
-  }, []);
 
   return (
     <div
@@ -45,12 +49,46 @@ function App() {
               </button>
             </div>
 
+            {/* Loading Resume */}
+            {isLoading && (
+              <div className="flex items-center justify-center h-full">
+                <div className="animate-spin rounded-full h-20 w-20 border-b-4 border-fuchsia-200"></div>
+              </div>
+            )}
+
+            {/* Error Loading Resume */}
+            {isError && (
+              <div className="flex flex-col items-center justify-center h-full">
+                <h4 className="font-extrabold text-white">
+                  Oops! Something went wrong
+                </h4>
+                <span className="flex items-center gap-2">
+                  <h5 className="font-semibold text-gray-100">
+                    Type:
+                  </h5>
+                  <h5 className="font-medium text-fuchsia-100">
+                    {error.name}
+                  </h5>
+                </span>
+                <span className="flex items-center gap-2">
+                  <h5 className="font-semibold text-gray-100">
+                    Message:
+                  </h5>
+                  <h5 className="font-medium text-fuchsia-100">
+                    {error.message}
+                  </h5>
+                </span>
+              </div>
+            )}
+
             {/* PDF Viewer  */}
-            <iframe
-              src={resumeUrl}
-              title="Resume"
-              className="w-full h-full border-none"
-            />
+            {isSuccess && (
+              <iframe
+                src={data}
+                title="Resume"
+                className="w-full h-full border-none"
+              />
+            )}
           </div>
         </div>
       )}

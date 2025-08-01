@@ -1,11 +1,24 @@
 import { useEffect, useState } from "react";
 import InfoCard from "./shared/InfoCard";
 import SectionCard from "./shared/SectionCard";
-import { CategoryResponseObject, getSkills } from "../api/Skills";
+import { CategoryResponseObject, getSkills } from "../lib/api/Skills";
 import { education, interests } from "../data/profile";
 import { SCREEN_SIZE, useDetectScreenType } from "../hooks/useDetectScreenType";
+import { useQuery } from "@tanstack/react-query";
+import SkeletonSkills from "./shared/SkeletonSkills";
 
 function AboutSection() {
+  const { data, isSuccess, isError, isLoading } = useQuery({
+    queryKey: ["skills"],
+    queryFn: getSkills,
+  });
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      setData(data);
+    }
+  }, [isSuccess, data]);
+
   const isMpbile = useDetectScreenType(SCREEN_SIZE.LARGE);
   const [skillsCategories, setData] = useState<CategoryResponseObject[]>([]);
   const [index, setIndex] = useState(0);
@@ -28,12 +41,6 @@ function AboutSection() {
   useEffect(() => {
     setInterest(interests[index]);
   }, [index]);
-
-  useEffect(() => {
-    getSkills().then((response: CategoryResponseObject[]) => {
-      setData(response);
-    });
-  }, []);
 
   return (
     <section id="about" className="w-full px-2 py-20 text-white">
@@ -82,37 +89,42 @@ function AboutSection() {
           </InfoCard>
 
           {/* Skills Section */}
-          <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
-            <h4 className="font-semibold text-fuchsia-300 mb-6">
-              Skills
-            </h4>
+          {(isLoading || isError) && (
+            <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
+              <h4 className="font-semibold text-fuchsia-300 mb-6">Skills</h4>
+              <SkeletonSkills arrayLength={2} />
+            </div>
+          )}
 
-            {/* Skills */}
-            {skillsCategories.map((category) => (
-              <div key={category.name} className="flex-1 mb-4">
-                <h5 className="text-fuchsia-300/75">
-                  {category.name}
-                </h5>
-                <div className="grid grid-cols-2 md:flex md:flex-row md:w-4/5 flex-wrap mt-2 gap-2">
-                  {category.skills.map((skill) => (
-                    <div
-                      key={skill.title}
-                      className="flex flex-col md:flex-row gap-2 p-6 md:p-3 bg-fuchsia-100/15
-                      backdrop-blur-2xl border border-gray-300/50 rounded-lg shadow-2xl items-center"
-                    >
-                      <img src={skill.image} className="w-6 h-6" />
-                      <span
+          {isSuccess && (
+            <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
+              <h4 className="font-semibold text-fuchsia-300 mb-6">Skills</h4>
+
+              {/* Skills */}
+              {skillsCategories.map((category) => (
+                <div key={category.name} className="flex-1 mb-4">
+                  <h5 className="text-fuchsia-300/75">{category.name}</h5>
+                  <div className="grid grid-cols-2 md:flex md:flex-row md:w-4/5 flex-wrap mt-2 gap-2">
+                    {category.skills.map((skill) => (
+                      <div
                         key={skill.title}
-                        className="text-base font-semibold"
+                        className="flex flex-col md:flex-row gap-2 p-6 md:p-3 bg-fuchsia-100/15
+                      backdrop-blur-2xl border border-gray-300/50 rounded-lg shadow-2xl items-center"
                       >
-                        {skill.title}
-                      </span>
-                    </div>
-                  ))}
+                        <img src={skill.image} className="w-6 h-6" />
+                        <span
+                          key={skill.title}
+                          className="text-base font-semibold"
+                        >
+                          {skill.title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </SectionCard>
 
         {/* Education Section */}
@@ -141,7 +153,9 @@ function AboutSection() {
                     </a>
                   </div>
                   <p>
-                    <span className="text-md sm:text-sm md:text-base font-extrabold">Coursework:</span>
+                    <span className="text-md sm:text-sm md:text-base font-extrabold">
+                      Coursework:
+                    </span>
                     {isMpbile ? (
                       // Mobile
                       <span className="list-disc list-inside">
