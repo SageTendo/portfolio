@@ -20,6 +20,7 @@ jobs:
           npm run build
 
       - name: Deploy 🚀
+        if: github.ref == 'refs/heads/main'   # Only run on main branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: client/dist # The folder the action should deploy.
