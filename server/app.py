@@ -24,13 +24,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-notion = AsyncClient(options=dict(
-    auth=os.environ.get("NOTION_SECRET")
-))
+notion = AsyncClient(options=dict(auth=os.environ.get("NOTION_SECRET")))
+CACHE_HEADERS = dict(cache_control="public, max-age=3600")
 
-CACHE_HEADERS = dict(
-    cache_control="public, max-age=3600"
-)
 
 @app.get("/")
 async def root():
@@ -40,7 +36,8 @@ async def root():
 @app.get("/api/skills")
 async def get_skills():
     response = await notion.databases.query(
-        database_id=os.environ.get("NOTION_SKILLS_DATABASE_ID")
+        database_id=os.environ.get("NOTION_SKILLS_DATABASE_ID"),
+        sorts=[dict(property="ID", direction="ascending")],
     )
 
     data = json.loads(
@@ -71,7 +68,8 @@ async def get_skills():
 @app.get("/api/projects")
 async def projects():
     response = await notion.databases.query(
-        database_id=os.environ.get("NOTION_PROJECTS_DATABASE_ID")
+        database_id=os.environ.get("NOTION_PROJECTS_DATABASE_ID"),
+        sorts=[dict(property="ID", direction="ascending")],
     )
 
     data = json.loads(
