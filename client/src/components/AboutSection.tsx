@@ -157,7 +157,7 @@ function AboutSection() {
                       Coursework:
                     </span>
                     {isMpbile ? (
-                      // Mobile
+                      // Mobile view
                       <span className="list-disc list-inside">
                         {edu.coursework.map((course, cIndex) => (
                           <li
@@ -169,7 +169,7 @@ function AboutSection() {
                         ))}
                       </span>
                     ) : (
-                      // Desktop
+                      // Desktop view
                       <span className="flex w-full flex-wrap gap-1 px-2">
                         {edu.coursework.map((course, cIndex) => (
                           <span
