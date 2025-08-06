@@ -63,7 +63,7 @@ function AboutSection() {
               <p>
                 My programming journey started with a primary school project, a
                 basic HTML/CSS "website"{" "}
-                <i>(really just a bunch of linked pages)</i> . My friend & I
+                <i>(really just a bunch of linked pages)</i>. My friend & I
                 built a site about ourselves and skateboarding. We had a a blast
                 & learned a lot from the experience.
                 <br />
