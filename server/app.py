@@ -4,7 +4,7 @@ from types import SimpleNamespace
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from notion_client import AsyncClient
+from notion_client import Client
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-notion = AsyncClient(options=dict(auth=os.environ.get("NOTION_SECRET")))
+notion = Client(options=dict(auth=os.environ.get("NOTION_SECRET")))
 
 @app.get("/")
 async def root():
@@ -33,7 +33,7 @@ async def root():
 
 @app.get("/api/skills")
 async def get_skills():
-    response = await notion.databases.query(
+    response = notion.databases.query(
         database_id=os.environ.get("NOTION_SKILLS_DATABASE_ID"),
         sorts=[dict(property="ID", direction="ascending")],
     )
@@ -65,7 +65,7 @@ async def get_skills():
 
 @app.get("/api/projects")
 async def projects():
-    response = await notion.databases.query(
+    response = notion.databases.query(
         database_id=os.environ.get("NOTION_PROJECTS_DATABASE_ID"),
         sorts=[dict(property="ID", direction="ascending")],
     )
@@ -94,7 +94,7 @@ async def projects():
 
 @app.get("/api/resume")
 async def resume():
-    response = await notion.databases.query(
+    response = notion.databases.query(
         database_id=os.environ.get("NOTION_DOC_DATABASE_ID")
     )
 
