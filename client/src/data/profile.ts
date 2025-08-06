@@ -39,7 +39,7 @@ export const interests = [
   "diving into music production & new music",
   "binge watching thrillers & sci-fi",
   "playing video games",
-  "playing chess",
+  "enjoying a game of chess",
   "looking for something new to experience",
 ];
 
