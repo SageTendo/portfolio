@@ -6,6 +6,7 @@ import { education, interests } from "../data/profile";
 import { SCREEN_SIZE, useDetectScreenType } from "../hooks/useDetectScreenType";
 import { useQuery } from "@tanstack/react-query";
 import SkeletonSkills from "./shared/SkeletonSkills";
+import { ExperienceSection } from "./ExperienceSection";
 
 function AboutSection() {
   const { data, isSuccess, isError, isLoading } = useQuery({
@@ -43,21 +44,23 @@ function AboutSection() {
   }, [index]);
 
   return (
-    <section id="about" className="w-full px-2 py-20 text-white">
+    <section id="about" className="w-full px-2 pt-20 text-white">
       <div className="max-w-7xl mx-auto space-y-20">
         {/* About Section */}
         <SectionCard title="About">
           <InfoCard title="Who Am I?">
             <div className="space-y-4">
               <p>
-                Hi, my name is Nyasha. I'm a software engineer with a desire to
-                explore and turn random ideas into code. It usually starts with
-                - "I wonder if I can make
+                I'm a software developer with a desire to explore and turn
+                random ideas into code. It usually starts with - "I wonder if I
+                can make
                 <strong className="text-fuchsia-200">
                   {" "}
-                  [Insert Idea Here]
+                  [Insert Idea Here]{" "}
                 </strong>
-                ".
+                ." I mainly focus on backend systems, API design, and
+                data-driven applications. I also enjoy experimenting with
+                low-level programming, and emulation.
               </p>
 
               <p>
@@ -74,7 +77,7 @@ function AboutSection() {
               </p>
               <p>
                 Fast forward to today, with having graduated with a CS degree,
-                my interest in programming and technology has only increased.
+                my interest in programming and the tech ecosystem has only increased.
                 <br />
                 When I'm not coding, you can find me{" "}
                 <strong
@@ -89,42 +92,44 @@ function AboutSection() {
           </InfoCard>
 
           {/* Skills Section */}
-          {(isLoading || isError) && (
-            <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
-              <h4 className="font-semibold text-fuchsia-300 mb-6">Skills</h4>
-              <SkeletonSkills arrayLength={2} />
-            </div>
-          )}
+          <section id="skills" className="w-full px-2 pt-20 text-white">
+            {(isLoading || isError) && (
+              <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
+                <h4 className="font-semibold text-fuchsia-300 mb-6">Skills</h4>
+                <SkeletonSkills arrayLength={2} />
+              </div>
+            )}
 
-          {isSuccess && (
-            <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
-              <h4 className="font-semibold text-fuchsia-300 mb-6">Skills</h4>
+            {isSuccess && (
+              <div className="flex flex-col w-full h-full border-l-4 border-fuchsia-400/50 pl-6">
+                <h4 className="font-semibold text-fuchsia-300 mb-6">Skills</h4>
 
-              {/* Skills */}
-              {skillsCategories.map((category) => (
-                <div key={category.name} className="flex-1 mb-4">
-                  <h5 className="text-fuchsia-300/75">{category.name}</h5>
-                  <div className="grid grid-cols-2 md:flex md:flex-row md:w-4/5 flex-wrap mt-2 gap-2">
-                    {category.skills.map((skill) => (
-                      <div
-                        key={skill.title}
-                        className="flex flex-col md:flex-row gap-2 p-6 md:p-3 bg-fuchsia-100/15
-                      backdrop-blur-2xl border border-gray-300/50 rounded-lg shadow-2xl items-center"
-                      >
-                        <img src={skill.image} className="w-6 h-6" />
-                        <span
+                {/* Skills */}
+                {skillsCategories.map((category) => (
+                  <div key={category.name} className="flex-1 mb-4">
+                    <h5 className="text-fuchsia-300/75">{category.name}</h5>
+                    <div className="grid grid-cols-2 md:flex md:flex-row md:w-4/5 flex-wrap mt-2 gap-2">
+                      {category.skills.map((skill) => (
+                        <div
                           key={skill.title}
-                          className="text-base font-semibold"
+                          className="flex flex-col md:flex-row gap-2 p-6 md:p-3 bg-fuchsia-100/15
+                      backdrop-blur-2xl border border-gray-300/50 rounded-lg shadow-2xl items-center"
                         >
-                          {skill.title}
-                        </span>
-                      </div>
-                    ))}
+                          <img src={skill.image} className="w-6 h-6" />
+                          <span
+                            key={skill.title}
+                            className="text-base font-semibold"
+                          >
+                            {skill.title}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
+          </section>
         </SectionCard>
 
         {/* Education Section */}
@@ -188,6 +193,9 @@ function AboutSection() {
             ))}
           </div>
         </SectionCard>
+
+        {/* Experience Section */}
+        <ExperienceSection />
       </div>
     </section>
   );
