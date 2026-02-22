@@ -26,9 +26,65 @@ app.add_middleware(
 
 notion = Client(options=dict(auth=os.environ.get("NOTION_SECRET")))
 
+
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+
+@app.get("/api/experience")
+async def experience():
+    response = notion.databases.query(
+        database_id=os.environ.get("NOTION_EXPERIENCE_DATABASE_ID"),
+        sorts=[dict(property="ID", direction="ascending")],
+    )
+
+    data = json.loads(
+        json.dumps(response, sort_keys=False),
+        object_hook=lambda d: SimpleNamespace(**d),
+    )
+    props = [result.properties for result in data.results]
+
+    return_data = [
+        {
+            "company": (
+                prop.company.rich_text[0].plain_text
+                if getattr(prop.company, "rich_text", None)
+                and len(prop.company.rich_text) > 0
+                else ""
+            ),
+            "position": (
+                prop.position.title[0].plain_text
+                if getattr(prop.position, "title", None)
+                and len(prop.position.title) > 0
+                else ""
+            ),
+            "start": (
+                prop.start.rich_text[0].plain_text
+                if getattr(prop.start, "rich_text", None)
+                and len(prop.start.rich_text) > 0
+                else ""
+            ),
+            "end": (
+                prop.end.rich_text[0].plain_text
+                if getattr(prop.end, "rich_text", None) and len(prop.end.rich_text) > 0
+                else ""
+            ),
+            "description": [
+                line.strip()
+                for paragraph in (
+                    prop.description.rich_text[0].plain_text.split("\n\n")
+                    if getattr(prop.description, "rich_text", None)
+                    and len(prop.description.rich_text) > 0
+                    else []
+                )
+                for line in paragraph.split("\n\n")
+                if line.strip()
+            ],
+        }
+        for prop in props
+    ]
+    return JSONResponse(return_data)
 
 
 @app.get("/api/skills")
