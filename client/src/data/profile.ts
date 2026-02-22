@@ -37,9 +37,10 @@ export const education = [
 export const interests = [
   "skateboarding",
   "diving into music production & new music",
-  "binge watching thrillers & sci-fi",
+  "nerding out on thrillers & sci-fi",
   "playing video games",
-  "enjoying a game of chess",
+  "enjoying a good game of chess",
+  "trying new sushi spots",
   "looking for something new to experience",
 ];
 

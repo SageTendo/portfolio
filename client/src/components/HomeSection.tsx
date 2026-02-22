@@ -26,7 +26,7 @@ export function HomeSection() {
           {/* Headings */}
           <div className="mt-6">
             <h4 className="text-purple-300">Hi, I'm Nyasha</h4>
-            <h2 className="text-white leading-tight">Software Engineer</h2>
+            <h2 className="text-white leading-tight">Software Developer</h2>
           </div>
         </div>
 
